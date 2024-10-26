@@ -13,10 +13,14 @@ var guessed_letters = "";
 var dash;
 var flag = 0;
 var hang = 0;
+var textNode = document.createTextNode("Press enter to start");
+document.querySelector(".hangman").appendChild(textNode);
+
 window.addEventListener("keydown", checkIfEnter);
 
 function checkIfEnter(event) {
   if (event.key == "Enter") {
+    document.querySelector(".hangman").removeChild(textNode);
     startGame();
   }
 }
@@ -33,7 +37,7 @@ function drawDashes() {
 
   document.querySelectorAll(".letter").forEach((letter) => {
     letter.addEventListener("click", () => {
-        letter.style.display = "none";
+      letter.style.display = "none";
       checkCorrectLetters(letter.textContent);
     });
   });
@@ -49,7 +53,6 @@ function checkCorrectLetters(gussed_letter) {
     }
   }
   if (flag === 0) {
-
     hang = hang + 1;
     addParts(hang);
   }
