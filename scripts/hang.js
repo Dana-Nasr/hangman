@@ -4,10 +4,9 @@ function createParts(source, css_class) {
   part = document.createElement("img");
   part.setAttribute("src", source);
   part.setAttribute("class", css_class);
-
   return part;
 }
-
+function addParts(hang){
 if (hang === 1) {
   part = createParts("./assets/head.svg", "head");
   hangman.appendChild(part);
@@ -26,4 +25,5 @@ if (hang === 1) {
 } else if (hang === 6) {
   part = createParts("./assets/right-leg.svg", "right-leg");
   hangman.appendChild(part);
+}
 }

@@ -49,7 +49,7 @@ function checkCorrectLetters(gussed_letter) {
   }
   if (flag === 0) {
     hang = hang + 1;
-    console.log(hang);
+    addParts(hang);
   }
   flag = 0;
   dash = n_dash.join(" ");
