@@ -1,6 +1,6 @@
 var words = [
   "HELLO",
-  "JAVA",
+  "JAVASCRIPT",
   "DICTOIONARY",
   "HANGMAN",
   "DEVELOPER",
@@ -33,6 +33,7 @@ function drawDashes() {
 
   document.querySelectorAll(".letter").forEach((letter) => {
     letter.addEventListener("click", () => {
+        letter.style.display = "none";
       checkCorrectLetters(letter.textContent);
     });
   });
@@ -48,6 +49,7 @@ function checkCorrectLetters(gussed_letter) {
     }
   }
   if (flag === 0) {
+
     hang = hang + 1;
     addParts(hang);
   }
