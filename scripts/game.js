@@ -58,7 +58,7 @@ function checkCorrectLetters(gussed_letter) {
   dash = n_dash.join(" ");
   console.log(dash);
   console.log(word);
-  
+
   if (word == dash.split(" ").join("")) {
     console.log("eneter");
     location.reload();
@@ -69,7 +69,5 @@ function checkCorrectLetters(gussed_letter) {
     addParts(hang);
   }
   flag = 0;
-
-  //change list to str and display
   answer.textContent = dash;
 }
