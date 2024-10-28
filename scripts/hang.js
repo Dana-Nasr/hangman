@@ -28,7 +28,8 @@ function addParts(hang) {           //ading parts to the hangman whn letter gues
     part = createParts("./assets/right-leg.svg", "right-leg");
     hangman.appendChild(part);
   } else {
-    var textNode = document.createTextNode("GAME OVERR :(");
+    var textNode = document.createTextNode("GAME OVER");
     document.querySelector(".hangman").appendChild(textNode);
+    location.reload()
   }
 }

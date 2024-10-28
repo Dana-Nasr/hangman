@@ -9,14 +9,13 @@ var words = [
 ];
 var word;
 var answer = document.getElementById("answer-section");
-var guessed_letters = "";
 var dash;
 var flag = 0;
 var hang = 0;
 var textNode = document.createTextNode("Press enter to start");
 document.querySelector(".hangman").appendChild(textNode);
 
-window.addEventListener("keydown", checkIfEnter);  //listen key board check if key enter
+window.addEventListener("keydown", checkIfEnter); //listen key board check if key enter
 
 function checkIfEnter(event) {
   if (event.key == "Enter") {
@@ -29,13 +28,15 @@ function startGame() {
   drawDashes();
 }
 
-function drawDashes() { //display dashes on screen split every letter alone and represent by dash
+function drawDashes() {
+  //display dashes on screen split every letter alone and represent by dash
   dash = answer.textContent = word
     .split("")
     .map(() => "_")
     .join(" ");
 
-  document.querySelectorAll(".letter").forEach((letter) => {   //when the user press a letter removes it and check if correct 
+  document.querySelectorAll(".letter").forEach((letter) => {
+    //when the user press a letter removes it and check if correct
     letter.addEventListener("click", () => {
       letter.style.display = "none";
       checkCorrectLetters(letter.textContent);
@@ -45,18 +46,30 @@ function drawDashes() { //display dashes on screen split every letter alone and 
 
 function checkCorrectLetters(gussed_letter) {
   var n_dash = dash.split(" ");
-  for (let i = 0; i < word.length; i++) { //traversal of word str and check with guessed letter o(n)
+  for (let i = 0; i < word.length + 1; i++) {
+    //traversal of word and check with guessed letter o(n)
     if (word[i] === gussed_letter) {
-      n_dash[i] = word[i];      //create new lst to save letters 
-      flag = 1;                 //flag to detect letter is found else add part to hang
-      console.log(n_dash);
+      n_dash[i] = word[i]; //create new lst to save letters
+      flag = 1; //flag to detect letter is found else add part to hang
     }
   }
+  console.log(typeof dash);
+  console.log(typeof word);
+  dash = n_dash.join(" ");
+  console.log(dash);
+  console.log(word);
+  
+  if (word == dash.split(" ").join("")) {
+    console.log("eneter");
+    location.reload();
+  }
+
   if (flag === 0) {
     hang = hang + 1;
     addParts(hang);
   }
   flag = 0;
-  dash = n_dash.join(" "); //change list to str and display
+
+  //change list to str and display
   answer.textContent = dash;
 }
